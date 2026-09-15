@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rithika Rajesh — Digital Enablement Internship, Aritzia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+  /* =========================================================
+     EDIT ME: all your personal content lives in this JS object
+     near the bottom of the file, in the <script> tag.
+     You should not need to touch the CSS or markup below
+     unless you want to change the design itself.
+     ========================================================= */
+
+  :root{
+    --bg: #F7F4EE;
+    --ink: #211E1A;
+    --muted: #6E665C;
+    --accent: #9C6B3F;
+    --accent-soft: #E9DDC8;
+    --line: #DED6C6;
+    --card: #EFE9DC;
+    --maxw: 760px;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,h2,h3{
+    font-family:'Fraunces', Georgia, serif;
+    font-weight:500;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+
+  a{ color: inherit; }
+
+  .wrap{
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- top bar ---------- */
+  header.topbar{
+    position: sticky;
+    top:0;
+    z-index: 20;
+    background: rgba(247,244,238,0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+  }
+  .topbar-inner{
+    max-width: var(--maxw);
+    margin:0 auto;
+    padding: 16px 28px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .topbar-name{
+    font-family:'Fraunces', serif;
+    font-size: 1.05rem;
+    font-style: italic;
+  }
+  nav.toplinks{
+    display:flex;
+    gap: 22px;
+    flex-wrap: wrap;
+  }
+  nav.toplinks a{
+    font-size: 0.9rem;
+    text-decoration:none;
+    color: var(--muted);
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: color .15s ease, border-color .15s ease;
+  }
+  nav.toplinks a:hover{
+    color: var(--ink);
+    border-color: var(--accent);
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding: 76px 0 56px;
+    opacity:0;
+    transform: translateY(14px);
+    animation: rise .7s ease forwards;
+  }
+  @keyframes rise{
+    to{ opacity:1; transform:none; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .hero{ animation:none; opacity:1; transform:none; }
+  }
+  .hero h1{
+    font-size: clamp(2.1rem, 5vw, 3.05rem);
+    line-height:1.12;
+    max-width: 12ch;
+  }
+  .hero .role-line{
+    margin-top: 22px;
+    color: var(--muted);
+    font-size: 1rem;
+    max-width: 46ch;
+  }
+  .hero .role-line strong{
+    color: var(--ink);
+    font-weight:600;
+  }
+  .hero .cta-row{
+    margin-top: 30px;
+    display:flex;
+    gap:14px;
+    flex-wrap: wrap;
+  }
+  .btn{
+    display:inline-block;
+    padding: 11px 20px;
+    border-radius: 3px;
+    text-decoration:none;
+    font-size: 0.92rem;
+    font-weight:500;
+    border: 1px solid var(--ink);
+    transition: background .15s ease, color .15s ease;
+  }
+  .btn.primary{
+    background: var(--ink);
+    color: var(--bg);
+  }
+  .btn.primary:hover{
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  .btn.ghost{
+    background:transparent;
+    color: var(--ink);
+  }
+  .btn.ghost:hover{
+    background: var(--card);
+  }
+
+  /* ---------- generic sections ---------- */
+  section{
+    padding: 52px 0;
+    border-top: 1px solid var(--line);
+  }
+  section h2{
+    font-size: 1.5rem;
+    font-style: italic;
+    margin-bottom: 22px;
+  }
+  section p{
+    color: var(--ink);
+    max-width: 62ch;
+  }
+  section p + p{ margin-top: 14px; }
+
+  /* ---------- experience timeline ---------- */
+  .timeline{
+    display:flex;
+    flex-direction:column;
+    gap: 26px;
+  }
+  .titem{
+    display:grid;
+    grid-template-columns: 128px 1fr;
+    gap: 18px;
+  }
+  @media (max-width: 560px){
+    .titem{ grid-template-columns: 1fr; gap:4px; }
+  }
+  .titem .when{
+    color: var(--muted);
+    font-size: 0.85rem;
+    padding-top: 2px;
+  }
+  .titem .role{
+    font-weight:600;
+    font-size: 1rem;
+  }
+  .titem .org{
+    color: var(--muted);
+    font-size: 0.92rem;
+    margin-bottom: 6px;
+  }
+  .titem ul{
+    margin: 6px 0 0;
+    padding-left: 18px;
+    color: var(--ink);
+    font-size: 0.95rem;
+  }
+  .titem li + li{ margin-top: 4px; }
+
+  /* ---------- project / matrix ---------- */
+  .matrix-block{
+    margin-top: 24px;
+    display:grid;
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  @media (min-width: 640px){
+    .matrix-block{ grid-template-columns: 240px 1fr; align-items:start; }
+  }
+  .matrix{
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 16px;
+    position: relative;
+  }
+  .matrix-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    overflow:hidden;
+    height: 190px;
+  }
+  .mcell{
+    background: var(--bg);
+    padding: 8px;
+    font-size: 0.68rem;
+    color: var(--muted);
+    position: relative;
+  }
+  .mcell .dot{
+    display:inline-block;
+    width: 9px; height:9px;
+    border-radius:50%;
+    background: var(--accent);
+    margin-right: 6px;
+  }
+  .matrix-axis-x, .matrix-axis-y{
+    font-size: 0.68rem;
+    color: var(--muted);
+    text-align:center;
+    margin-top:6px;
+  }
+  .matrix-caption{
+    font-size:0.95rem;
+  }
+  .matrix-caption ul{
+    padding-left: 18px;
+    margin-top:10px;
+  }
+  .matrix-caption li + li{ margin-top:6px; }
+
+  /* ---------- skills ---------- */
+  .tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap: 10px;
+    margin-top: 6px;
+  }
+  .tag{
+    border:1px solid var(--line);
+    background: var(--card);
+    padding: 7px 13px;
+    border-radius: 3px;
+    font-size: 0.85rem;
+    color: var(--ink);
+  }
+  .skill-groups{
+    display:grid;
+    gap: 24px;
+  }
+  .skill-group h3{
+    font-family:'Inter', sans-serif;
+    font-weight:600;
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  /* ---------- contact ---------- */
+  .contact-row{
+    display:flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 18px;
+  }
+
+  footer{
+    padding: 34px 0 60px;
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-name" data-field="name">Your Name</div>
+    <nav class="toplinks">
+      <a href="#why">Why Aritzia</a>
+      <a href="#experience">Experience</a>
+      <a href="#leadership">Leadership</a>
+      <a href="#project">A digital enablement exercise</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero" style="border-top:none;">
+    <h1 data-field="headline">I want to build the technology behind beautiful things.</h1>
+    <p class="role-line">
+      <strong data-field="name2">Your Name</strong> —
+      <span data-field="programLine">B.Comm candidate, Operations &amp; Technology, University of Somewhere, graduating April 2028</span>.
+      Applying for the <strong>Digital Enablement Internship</strong> at Aritzia, Summer 2027.
+    </p>
+  </section>
+
+  <section id="why">
+    <h2>Why Aritzia</h2>
+    <p data-field="whyP1">
+      Aritzia runs Digital as a genuinely cross-functional discipline — Product, Design, Omni, Technology,
+      Retail, Marketing, and Supply Chain all pulling toward the same client experience. That's the kind
+      of environment I want to learn in: one where a good idea has to survive contact with five different
+      teams before it ships.
+    </p>
+    <p data-field="whyP2">
+      [Replace this paragraph with one concrete, specific reason: a store experience you noticed, a
+      product you followed, or a project of your own that overlapped with retail operations or digital
+      strategy. Specific beats general here.]
+    </p>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+    <div class="timeline" data-field="timeline">
+
+      <div class="titem">
+        <div class="when">Jun – Aug 2026</div>
+        <div>
+          <div class="role">Technology Infrastructure &amp; Operations Intern</div>
+          <div class="org">Mattel</div>
+          <ul>
+            <li>Analyzed cloud spending using GCP Billing, Cloudability, and Excel to support FinOps reporting and cost-optimization decisions.</li>
+            <li>Designed cloud intake workflows and standardized GCP resource tagging to improve operational efficiency.</li>
+            <li>Built internal tools, including a Chrome extension and a Coupa OK2PAY status dashboard, to improve visibility into enterprise workflows.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="titem">
+        <div class="when">Feb 2025 – May 2026</div>
+        <div>
+          <div class="role">Student Hourly Tech</div>
+          <div class="org">Design Innovation Lab @ Wednt</div>
+          <ul>
+            <li>Supported students and faculty on 3D printing, textiles, laser cutting, and digital fabrication projects.</li>
+            <li>Troubleshot equipment issues while guiding users clearly through unfamiliar workflows.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="titem">
+        <div class="when">Jun – Sep 2025</div>
+        <div>
+          <div class="role">Frontend Developer &amp; UI/UX Design Intern</div>
+          <div class="org">99Yards (fashion-tech startup)</div>
+          <ul>
+            <li>Designed and built digital experiences with React, JavaScript, and Node.js to improve connectivity among fashion professionals.</li>
+            <li>Translated user and business needs into features by collaborating directly with product and design.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="titem">
+        <div class="when">Jul 2025</div>
+        <div>
+          <div class="role">Instructional Assistant</div>
+          <div class="org">Kode With Klossy</div>
+          <ul>
+            <li>Coordinated project milestones for four student teams building mobile apps, keeping 40+ scholars on track.</li>
+            <li>Co-designed a Swift/SwiftUI study app built around forgetting-curve research.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="leadership">
+    <h2>Leadership &amp; projects</h2>
+    <div class="timeline">
+
+      <div class="titem">
+        <div class="when">Oct 2024 – Present</div>
+        <div>
+          <div class="role">VP of DEIBA &amp; Project Member</div>
+          <div class="org">Design Interactive</div>
+          <ul>
+            <li>Lead design-focused initiatives and partnerships across the organization.</li>
+            <li>Designed a patient-facing Figma interface with a seven-person team, presented at a university-wide Design Showcase.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="titem">
+        <div class="when">Feb 2024 – Present</div>
+        <div>
+          <div class="role">Analyst &amp; Women in Consulting Ambassador</div>
+          <div class="org">Wisconsin Consulting Club</div>
+          <ul>
+            <li>Built a B2B growth strategy with a six-person team through market analysis and digital marketing research, projecting 10% client growth.</li>
+            <li>Selected among the top 13% of candidates through a competitive two-stage interview process.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="titem">
+        <div class="when">Jul 2025</div>
+        <div>
+          <div class="role">Finalist</div>
+          <div class="org">Kode With Klossy x Black Wealth Data Center Data Storytelling Challenge</div>
+          <ul>
+            <li>Analyzed workforce equity data in Tableau and built an interactive storytelling platform with Svelte, HTML, CSS, and JavaScript.</li>
+            <li>Selected as a finalist among 200+ participants.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="project">
+    <h2>A digital enablement exercise</h2>
+    <p>
+      One thing this team does constantly: decide which of many competing digital initiatives
+      actually gets resourced. At Mattel, I did a version of this with cloud spend — mapping
+      initiatives against cost impact and lift before they went to leadership. Here's the same
+      thinking applied to a plausible Aritzia Digital roadmap.
+    </p>
+
+    <div class="matrix-block">
+      <div class="matrix">
+        <div class="matrix-grid">
+          <div class="mcell"><span class="dot"></span>Checkout speed fix</div>
+          <div class="mcell"><span class="dot"></span>Loyalty app redesign</div>
+          <div class="mcell"><span class="dot"></span>Size-fit tool pilot</div>
+          <div class="mcell"><span class="dot"></span>In-store/online inventory sync</div>
+        </div>
+        <div class="matrix-axis-x">Effort: low → high</div>
+      </div>
+      <div class="matrix-caption">
+        <p data-field="projectP1">
+          If I were prioritizing this quarter's Digital roadmap, I'd start by plotting each
+          initiative on impact vs. effort, then pressure-test the top-left quadrant against
+          team capacity before it goes to leadership — the same exercise I ran on cloud
+          infrastructure spend at Mattel, just pointed at the client experience instead of cost.
+        </p>
+        <ul>
+          <li>Checkout speed fix — quick win, low lift, ships this sprint.</li>
+          <li>Loyalty app redesign — high impact but needs Product, Design, and Marketing aligned first.</li>
+          <li>Size-fit tool pilot — worth a small test before a full resourcing ask.</li>
+          <li>In-store/online inventory sync — highest effort, deprioritized until Supply Chain has capacity.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skill-groups">
+      <div class="skill-group">
+        <h3>Technical</h3>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">Java</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">SQL</span>
+          <span class="tag">R</span>
+          <span class="tag">HTML/CSS</span>
+          <span class="tag">Swift</span>
+          <span class="tag">Node.js</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Digital &amp; product</h3>
+        <div class="tags">
+          <span class="tag">React</span>
+          <span class="tag">Figma</span>
+          <span class="tag">SwiftUI</span>
+          <span class="tag">JIRA</span>
+          <span class="tag">Git/GitHub</span>
+          <span class="tag">UI/UX design</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Analytics &amp; operations</h3>
+        <div class="tags">
+          <span class="tag">Excel</span>
+          <span class="tag">Tableau</span>
+          <span class="tag">GCP</span>
+          <span class="tag">Data analysis</span>
+          <span class="tag">PowerPoint</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Project &amp; business</h3>
+        <div class="tags">
+          <span class="tag">Agile</span>
+          <span class="tag">Market analysis</span>
+          <span class="tag">Cross-functional collaboration</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Let's talk</h2>
+    <p data-field="contactP">
+      I'd love the chance to talk through how I'd approach this role. Résumé, transcript, and
+      LinkedIn are all one click away.
+    </p>
+    <div class="contact-row">
+      <a class="btn primary" href="#" data-field="linkedinHref">LinkedIn</a>
+      <a class="btn ghost" href="https://github.com/rrajesh222">GitHub</a>
+    </div>
+  </section>
+
+  <footer>
+    <span data-field="footerName">Your Name</span> · Built for the Aritzia Digital Enablement Internship, Summer 2027
+  </footer>
+
+</main>
+
+<script>
+  /* =========================================================
+     EDIT ME — put your real details here. Each key matches a
+     data-field attribute above, so changing a value here is
+     enough; you don't need to hunt through the HTML.
+
+     Any value left as null is skipped (the HTML default stays).
+     ========================================================= */
+  const content = {
+    name: "Rithika Rajesh",
+    headline: "I want to build the technology behind beautiful things.",
+    programLine: "B.S. Computer Science and Data Science, University of Wisconsin–Madison, graduating May 2027",
+    linkedinUrl: "https://www.linkedin.com/in/rithika1rajesh",
+    email: "rithika1rajesh@gmail.com",
+    whyP1: "I've always loved fashion and art — the way a great design can make you feel something before you even understand why — and I want to build a career at the intersection of that and technology. Aritzia's own founder talks about the business as both art and science, balancing the creative side of fashion with the discipline of retail analytics, and that's exactly the balance I'm chasing. Aritzia's eCommerce 2.0 strategy — personalized product discovery, creative innovation, and an intuitive experience across every touchpoint — is that philosophy in practice.",
+    whyP2: "I'm especially excited that Aritzia is building its first mobile app. I built a Swift/SwiftUI study app while teaching at Kode With Klossy, and I'd love to be part of a team shipping something like that for the first time at this scale. Between that, the frontend and product work I did at 99Yards for a fashion-tech startup, and the operational rigor I built analyzing infrastructure spend at Mattel, I want to bring both the craft and the discipline to a team that has to do both well.",
+    projectP1: null,
+    contactP: "I'd love the chance to talk through how I'd approach this role — feel free to reach out on LinkedIn.",
+  };
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const setText = (field, value) => {
+      if (value === null || value === undefined) return;
+      document.querySelectorAll(`[data-field="${field}"]`).forEach(el => el.textContent = value);
+    };
+    setText("name", content.name);
+    setText("name2", content.name);
+    setText("footerName", content.name);
+    setText("headline", content.headline);
+    setText("programLine", content.programLine);
+    setText("whyP1", content.whyP1);
+    setText("whyP2", content.whyP2);
+    setText("projectP1", content.projectP1);
+    setText("contactP", content.contactP);
+
+    document.querySelectorAll('[data-field="linkedinHref"]')
+      .forEach(el => el.setAttribute("href", content.linkedinUrl));
+    document.querySelectorAll('[data-field="emailHref"]')
+      .forEach(el => el.setAttribute("href", `mailto:${content.email}`));
+  });
+</script>
+
+</body>
+</html>
